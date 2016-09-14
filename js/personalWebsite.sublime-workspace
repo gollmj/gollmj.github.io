@@ -1,0 +1,516 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"h",
+				"href	Attr"
+			],
+			[
+				"Read",
+				"readFile"
+			],
+			[
+				"list",
+				"listOfFiles"
+			],
+			[
+				"file",
+				"fileExtension"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"proc",
+				"process"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/Michael/gollmj.github.io/test.html",
+			"settings":
+			{
+				"buffer_size": 407,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "// Dots and lines\n\n$(function(){\n	var canvas = document.querySelector('canvas'),\n      ctx = canvas.getContext('2d'),\n      color = 'white';\n	canvas.width = window.innerWidth;\n	canvas.height = window.innerHeight;\n	canvas.style.display = 'block';\n	ctx.fillStyle = color;\n	ctx.lineWidth = 0.1;\n	ctx.strokeStyle = color;\n\n	var mousePosition = {\n		x: 30 * canvas.width / 100,\n		y: 30 * canvas.height / 100\n	};\n\n	var dots = {\n		nb: 200,\n		distance: 80,\n		d_radius: 150,\n		array: []\n	};\n\n	function Dot(){\n		this.x = Math.random() * canvas.width;\n		this.y = Math.random() * canvas.height;\n\n		this.vx = -0.5 + Math.random();\n		this.vy = -0.5 + Math.random();\n\n		this.radius = Math.random();\n	}\n\n	Dot.prototype = {\n		create: function(){\n			ctx.beginPath();\n			ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);\n			ctx.fill();\n		},\n\n		animate: function(){\n			for(i = 0; i < dots.nb; i++){\n\n				var dot = dots.array[i];\n\n				if(dot.y < 0 || dot.y > canvas.height){\n					dot.vx = dot.vx;\n					dot.vy = - dot.vy;\n				}\n				else if(dot.x < 0 || dot.x > canvas.width){\n					dot.vx = - dot.vx;\n					dot.vy = dot.vy;\n				}\n				dot.x += dot.vx;\n				dot.y += dot.vy;\n			}\n		},\n\n		line: function(){\n			for(i = 0; i < dots.nb; i++){\n				for(j = 0; j < dots.nb; j++){\n					i_dot = dots.array[i];\n					j_dot = dots.array[j];\n\n					if((i_dot.x - j_dot.x) < dots.distance && (i_dot.y - j_dot.y) < dots.distance && (i_dot.x - j_dot.x) > - dots.distance && (i_dot.y - j_dot.y) > - dots.distance){\n						if((i_dot.x - mousePosition.x) < dots.d_radius && (i_dot.y - mousePosition.y) < dots.d_radius && (i_dot.x - mousePosition.x) > - dots.d_radius && (i_dot.y - mousePosition.y) > - dots.d_radius){\n							ctx.beginPath();\n							ctx.moveTo(i_dot.x, i_dot.y);\n							ctx.lineTo(j_dot.x, j_dot.y);\n							ctx.stroke();\n							ctx.closePath();\n						}\n					}\n				}\n			}\n		}\n	};\n\n	function createDots(){\n		ctx.clearRect(0, 0, canvas.width, canvas.height);\n		for(i = 0; i < dots.nb; i++){\n			dots.array.push(new Dot());\n			dot = dots.array[i];\n\n			dot.create();\n		}\n\n		dot.line();\n		dot.animate();\n	}\n\n	$('canvas').on('mousemove mouseleave', function(e){\n		if(e.type == 'mousemove'){\n			mousePosition.x = e.pageX;\n			mousePosition.y = e.pageY;\n		}\n		if(e.type == 'mouseleave'){\n			mousePosition.x = canvas.width / 2;\n			mousePosition.y = canvas.height / 2;\n		}\n	});\n	setInterval(createDots, 1000/30);	\n});",
+			"file": "dotsAndLines.js",
+			"file_size": 2382,
+			"file_write_time": 130837118270000000,
+			"settings":
+			{
+				"buffer_size": 2382,
+				"line_ending": "Unix",
+				"name": "// Dots and lines"
+			}
+		},
+		{
+			"file": "/Users/Michael/gollmj.github.io/index.html",
+			"settings":
+			{
+				"buffer_size": 22947,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Michael/gollmj.github.io/css/styles.css",
+			"settings":
+			{
+				"buffer_size": 46049,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Michael/gollmj.github.io/blog.html",
+			"settings":
+			{
+				"buffer_size": 407,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "general-lettering.js",
+			"settings":
+			{
+				"buffer_size": 9333,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pac",
+		"selected_items":
+		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pac in",
+				"Package Control: Install Package"
+			],
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"insa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Michael/gollmj.github.io/images/icons/NEW/list.txt",
+		"/Users/Michael/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Michael/gollmj.github.io/css/retina-responsive.css",
+		"/Users/Michael/gollmj.github.io/ajax/project1.html",
+		"/Users/Michael/gollmj.github.io/js/modernizr.custom.js",
+		"/Users/Michael/gollmj.github.io/js/custom.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.sliphover.min.js",
+		"/Users/Michael/gollmj.github.io/js/general-lettering.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.textillate.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.lettering.js",
+		"/Users/Michael/gollmj.github.io/js/jquery-asPieProgress.min.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.sticky.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.flexslider-min.js",
+		"/Users/Michael/gollmj.github.io/js/SmoothScroll.js",
+		"/Users/Michael/gollmj.github.io/js/responsive-nav.js",
+		"/Users/Michael/gollmj.github.io/js/preloader.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.form.js",
+		"/Users/Michael/gollmj.github.io/js/input.fields.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.nav.js",
+		"/Users/Michael/gollmj.github.io/js/jquery.touchSwipe.min.js",
+		"/Users/Michael/gollmj.github.io/js/retina.min.js",
+		"/Users/Michael/gollmj.github.io/js/jquery-1.11.2.min.js",
+		"/Users/Michael/gollmj.github.io/js/jquery-easing-1.3.js",
+		"/Users/Michael/gollmj.github.io/personalWebsite.sublime-project",
+		"/Users/Michael/gollmj.github.io/css/contact.css",
+		"/Users/Michael/gollmj.github.io/css/progress.css",
+		"/Users/Michael/gollmj.github.io/css/styles.css",
+		"/Users/Michael/gollmj.github.io/css/print.css",
+		"/Users/Michael/gollmj.github.io/css/flexslider.css",
+		"/Users/Michael/gollmj.github.io/css/animate.css",
+		"/Users/Michael/gollmj.github.io/LICENSE.md",
+		"/Users/Michael/gollmj.github.io/index.html",
+		"/Users/Michael/gollmj.github.io/css/reset.css",
+		"/Users/Michael/gollmj.github.io/js/backgroundDots.js",
+		"/Users/Michael/Library/Application Support/Sublime Text 3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/Users/Michael/Projects/Node/LearnYouNode/mymodule.js",
+		"/Users/Michael/Projects/Node/LearnYouNode/app.js",
+		"/Users/Michael/Projects/Node/LearnYouNode/Running/index.html",
+		"/Users/Michael/Projects/Node/LearnYouNode/LearnYouNode.sublime-project",
+		"/Users/Michael/Projects/Node/LearnYouNode/Running/foo.js",
+		"/Users/Michael/Projects/Node/LearnYouNode/program.js",
+		"/Users/Michael/Projects/Node/LearnYouNode/test.js",
+		"/Users/Michael/Projects/Node/LearnYouNode/index.html",
+		"/Users/Michael/Projects/Node/LearnYouNode/Running",
+		"/Users/Michael/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Michael/Projects/Node/program.js",
+		"/Users/Michael/Projects/Node/mymodule.js",
+		"/Users/Michael/Projects/Node/app.js",
+		"/Users/Michael/Projects/Node/test.js",
+		"/Users/Michael/.bash_profile"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"3F0004",
+			"200",
+			"images/icons/",
+			"js/",
+			"src=\"",
+			"image",
+			"robert",
+			"michael",
+			"robert Smith",
+			"navigation",
+			"myArray",
+			");\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/Michael/gollmj.github.io/test.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								159,
+								159
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "dotsAndLines.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								919,
+								919
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// Dots and lines",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/Michael/gollmj.github.io/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/Michael/gollmj.github.io/css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 46049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 29.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/Michael/gollmj.github.io/blog.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 407,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "general-lettering.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9333,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9333,
+								9333
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "personalWebsite.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
